@@ -3,6 +3,9 @@
   <button @click="fetchUser">user</button>
   <div>{{user}}</div>
   <button @click="logout">logout</button>
+  <div>
+    {{apiResult}}
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,6 +13,10 @@ let user = ref();
 let loginRefetch;
 let logoutRefetch;
 let userRefetch;
+
+let apiResult = ref();
+
+apiResult.value = await $fetch('/api/hello');
 
 const login = async () => {
   if (loginRefetch) {
